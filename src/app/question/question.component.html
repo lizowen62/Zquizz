@@ -1,0 +1,53 @@
+
+<app-sidebar></app-sidebar>
+
+<div *ngIf="isLoading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<div *ngIf="questionList" class="container">
+    <div class="card">
+        <div class="d-flex justify-content p-3">
+            Welcome {{ name }}
+        </div>
+        <div class="d-flex justify-content-around py-3">
+            <div class="score">
+                {{ score }} points {{ current + 1 }} sur {{ questionList.length}} questions du quizz
+            </div>
+            <div class="question-remain">
+                remaining : {{ timer }}
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [ngStyle]="{'width' : progressBar + '%'}" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <div class="question">
+
+            <div *ngIf="questionList[current]?.Type == 1" class="name col-md-4 my3">
+                <form (ngSubmit)="validQuestion()">
+                    <div class="card">
+                        {{ questionList[current]?.questionText }}
+                    </div>
+                    <input type="text" name="input" class="form-control" [(ngModel)]="inputQuestion">
+                    <input [disabled]="guess" type="submit" style="width:0px; height:0px; opacity:0;"/>
+                </form> 
+
+            </div>
+    
+            <div *ngIf="questionList[current]?.Type == 2" class="options">
+                <div class="card">
+                    {{ questionList[current]?.questionText }}
+                </div>
+                <ol>
+                    <li *ngFor="let option of questionList[current]?.option" (click)="answer(option[0])">
+                        <div class="card">
+                            {{ option[0].text }}
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
