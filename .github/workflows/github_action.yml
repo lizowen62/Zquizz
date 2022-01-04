@@ -15,11 +15,8 @@ jobs:
 
     steps:
     
-      - name: npm install, build, and test example
-        working-directory: /
-        run: |
-          npm install
-          npm run build --if-present
+      - name: Install Node.js packages
+        run: npm install
 
       - name: Check NPM vulnerabilities
         uses: oke-py/npm-audit-action@v1.7.1
