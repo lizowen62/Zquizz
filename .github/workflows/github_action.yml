@@ -17,11 +17,3 @@ jobs:
     
       - name: Install Node.js packages
         run: npm init -y && npm install
-
-      - name: Check NPM vulnerabilities
-        uses: oke-py/npm-audit-action@v1.7.1
-        with:
-          audit_level: moderate
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          issue_labels: vulnerability
-          dedupe_issues: true
