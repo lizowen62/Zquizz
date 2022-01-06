@@ -38,4 +38,10 @@ export class QuestionService {
     // return this.http.get<any>("assets/questions.json")
     return this.http.post<any>('http://localhost:3000/users', {name : user }, httpOptions)
   }
+
+  uupdateUser(user: String, score: Number) {
+    // return this.http.get<any>("assets/questions.json")
+    return this.http.put<any>('http://localhost:3000/update', {name : user , score: score }, httpOptions)
+  }
+
 }

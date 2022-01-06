@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
+    MatInputModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

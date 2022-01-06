@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { QuestionService } from '../service/question/question.service';
 
 @Component({
@@ -8,14 +9,13 @@ import { QuestionService } from '../service/question/question.service';
 })
 export class SidebarComponent implements OnInit {
 
-  public roomUsers: Array<string> = [];
+  public $task: Observable<any> | undefined;
+  public roomUsers: Array<any> = [];
 
   constructor(private questionService : QuestionService) { }
 
   ngOnInit(): void {
-    this.questionService.getQuestion().subscribe(res => {
-      this.roomUsers = res.data;
-    })
+    this.$task = this.questionService.getUsers();
   }
 
 }

@@ -81,8 +81,10 @@ export class QuestionComponent implements OnInit {
       console.log(this.inputQuestion)
       this.score += 10 * this.questionList[this.current].difficulty;
       this.openSnackBar("correct");
+      this.questionService.uupdateUser(this.name, this.score)
+      .subscribe( res => { console.log(res)} );
+      }
     }
-  }
 
   computeProgressBar() : number {
     return this.timer / this.questionList[this.current].duration * 100
@@ -92,6 +94,8 @@ export class QuestionComponent implements OnInit {
 
     if ( answer.correct ) {
       this.score += 10 * this.questionList[this.current].difficulty;
+      this.questionService.uupdateUser(this.name, this.score)
+      .subscribe( res => { console.log(res)} );
       this.nextQuestion();
     }
 
